@@ -1,0 +1,7 @@
+name: XPShare
+version: '${project.version}'
+main: me.dg.xpshare.XPShare
+api-version: 1.17
+authors: [ Daniel_Garcia, Kenley_Ruiz ]
+description: Store, get, share player xp
+website: https://github.com/Dg0222/XPShare_Minecraft_Plugin
