@@ -85,5 +85,5 @@ public class XPShareCommands implements CommandExecutor {
             }
             {
         return true;
-    }
+        }
     }
