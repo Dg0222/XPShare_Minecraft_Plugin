@@ -60,6 +60,7 @@ public class XPShareCommands implements CommandExecutor {
         // command to get player's currently stored xp /XPGet
         if(command.getName().equalsIgnoreCase("XPGet")){
 
+
             try {
                 int inputtedXpValue = Integer.parseInt(args[1]);
 
