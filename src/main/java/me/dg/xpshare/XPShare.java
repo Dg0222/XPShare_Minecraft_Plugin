@@ -10,6 +10,7 @@ public final class XPShare extends JavaPlugin {
     public void onEnable() {
         XPShareCommands commands = new XPShareCommands();
         getCommand("XPStore").setExecutor(commands);
+        getCommand("XPGet").setExecutor(commands);
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[XPShare]: plugin is enabled!");
     }
 
