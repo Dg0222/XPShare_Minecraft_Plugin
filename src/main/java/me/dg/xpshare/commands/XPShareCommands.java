@@ -25,7 +25,7 @@ public class XPShareCommands implements CommandExecutor {
         NamespacedKey nameSpacedKey = new NamespacedKey((Plugin) this, "storedXp");
         int storedXp = data.get(nameSpacedKey, PersistentDataType.INTEGER);
         int currentXp = player.getTotalExperience();
-        int GetXp = data.get(nameSpacedKey);
+       
 
 
         // command to store player's xp /XPStore
