@@ -25,6 +25,7 @@ public class XPShareCommands implements CommandExecutor {
         NamespacedKey nameSpacedKey = new NamespacedKey((Plugin) this, "storedXp");
         int storedXp = data.get(nameSpacedKey, PersistentDataType.INTEGER);
         int currentXp = player.getTotalExperience();
+        int GetXp = data.get(nameSpacedKey);
 
 
         // command to store player's xp /XPStore
@@ -59,8 +60,29 @@ public class XPShareCommands implements CommandExecutor {
         // command to get player's currently stored xp /XPGet
         if(command.getName().equalsIgnoreCase("XPGet")){
 
-        }
+            try {
+                int inputtedXpValue = Integer.parseInt(args[1]);
 
+                if(storedXp <= 0){
+                    player.sendMessage(ChatColor.RED + "There is no more xp to get!");
+                    return true;
+                }
+
+                if (inputtedXpValue <= storedXp){
+                    storedXp-=inputtedXpValue;
+                    player.setTotalExperience(currentXp + inputtedXpValue);
+                    player.sendMessage(ChatColor.GREEN + "Your XP has been retrieved successfully!");
+                }
+
+                else {
+                    player.sendMessage(ChatColor.RED + "Inputted value is greater than the amount of XP that is stored!");
+                }
+
+            }
+                catch(NumberFormatException ex) {
+                player.sendMessage(ChatColor.RED + "You must enter a valid amount to get");
+            }
+            {
         return true;
     }
-}
+    }

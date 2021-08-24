@@ -10,3 +10,7 @@ commands:
       description: Stores current player Xp
       usage: /<command> [integer]
       aliases: StoreXp
+      XPGet:
+        description: Get player Xp that was stored
+        usage: /<command> [integer]
+        aliases: GetXp
