@@ -20,5 +20,5 @@ commands:
           aliases: StoredXp
           XPShare:
             description: Share Xp with another player
-            usage: /<command> [integer]
+            usage: /<command> [player] [integer]
             aliases: ShareXp
