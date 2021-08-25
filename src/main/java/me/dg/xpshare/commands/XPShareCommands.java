@@ -55,7 +55,30 @@ public class XPShareCommands implements CommandExecutor {
         // command to share player's xp with another player /XPShare
         if(command.getName().equalsIgnoreCase("XPShare")){
 
-        }
+                try {
+
+                    String inputtedPlayerName = args[0];
+                    int inputtedXpValue = Integer.parseInt(args[1]);
+                    Player targetPlayer = Bukkit.getServer().getPlayer(inputtedPlayerName);
+
+                    if (inputtedXpValue > currentXp) {
+                        player.sendMessage(ChatColor.RED + "The number you have entered is greater than your current exp level!");
+                    } else {
+                        if (!(targetPlayer == null)) {
+                            int targetPlayerXp = targetPlayer.getTotalExperience();
+                            player.setTotalExperience(currentXp - inputtedXpValue);
+                            targetPlayer.setTotalExperience(targetPlayerXp + inputtedXpValue);
+                            player.sendMessage(ChatColor.GREEN + "XP successfully transferred!");
+                        } else {
+                            player.sendMessage(ChatColor.RED + "Player was not found!");
+                        }
+                    }
+                } catch (NumberFormatException ex) {
+                    player.sendMessage(ChatColor.RED + "You must enter a valid integer to share XP!");
+                } catch (NullPointerException ep) {
+                    player.sendMessage(ChatColor.RED + "An error has occurred!");
+                }
+            }
 
         // command to get player's currently stored xp /XPGet
         if(command.getName().equalsIgnoreCase("XPGet")) {
@@ -63,10 +86,10 @@ public class XPShareCommands implements CommandExecutor {
             try {
                 int inputtedXpValue = Integer.parseInt(args[0]);
 
-                if (storedXp <= 0) {
-                    player.sendMessage(ChatColor.RED + "There is no more xp to get!");
-                    return true;
-                }
+                    if (storedXp <= 0) {
+                        player.sendMessage(ChatColor.RED + "There is no more XP to get!");
+                        return true;
+                    }
 
                 if (inputtedXpValue <= storedXp) {
                     storedXp -= inputtedXpValue;
@@ -76,11 +99,18 @@ public class XPShareCommands implements CommandExecutor {
                     player.sendMessage(ChatColor.RED + "Inputted value is greater than the amount of XP that is stored!");
                 }
 
+                }
+                catch (NumberFormatException ex) {
+                    player.sendMessage(ChatColor.RED + "You must enter a valid amount to get");
+                }
+                catch (NullPointerException ep) {
+                    player.sendMessage(ChatColor.RED + "An error has occurred!");
+                }
             }
-            catch (NumberFormatException ex) {
-                player.sendMessage(ChatColor.RED + "You must enter a valid amount to get");
+
+            //command to show player's currently stored xp /XPStored
+            if (command.getName().equalsIgnoreCase("XPStored")) {
+                player.sendMessage(ChatColor.RED + "This is your current amount of XP stored!" + storedXp);
             }
-        }
-        return true;
         }
     }
