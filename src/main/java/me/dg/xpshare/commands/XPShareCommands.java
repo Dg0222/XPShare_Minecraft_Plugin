@@ -32,7 +32,7 @@ public class XPShareCommands implements CommandExecutor {
         if(command.getName().equalsIgnoreCase("XPStore")){
 
             try {
-                int inputtedXpValue = Integer.parseInt(args[1]);
+                int inputtedXpValue = Integer.parseInt(args[0]);
 
                 if(inputtedXpValue > currentXp){
                     player.sendMessage(ChatColor.RED + "The number you have entered is greater than your current exp level!");
@@ -58,32 +58,29 @@ public class XPShareCommands implements CommandExecutor {
         }
 
         // command to get player's currently stored xp /XPGet
-        if(command.getName().equalsIgnoreCase("XPGet")){
-
+        if(command.getName().equalsIgnoreCase("XPGet")) {
 
             try {
-                int inputtedXpValue = Integer.parseInt(args[1]);
+                int inputtedXpValue = Integer.parseInt(args[0]);
 
-                if(storedXp <= 0){
+                if (storedXp <= 0) {
                     player.sendMessage(ChatColor.RED + "There is no more xp to get!");
                     return true;
                 }
 
-                if (inputtedXpValue <= storedXp){
-                    storedXp-=inputtedXpValue;
+                if (inputtedXpValue <= storedXp) {
+                    storedXp -= inputtedXpValue;
                     player.setTotalExperience(currentXp + inputtedXpValue);
                     player.sendMessage(ChatColor.GREEN + "Your XP has been retrieved successfully!");
-                }
-
-                else {
+                } else {
                     player.sendMessage(ChatColor.RED + "Inputted value is greater than the amount of XP that is stored!");
                 }
 
             }
-                catch(NumberFormatException ex) {
+            catch (NumberFormatException ex) {
                 player.sendMessage(ChatColor.RED + "You must enter a valid amount to get");
             }
-            {
+        }
         return true;
         }
     }
