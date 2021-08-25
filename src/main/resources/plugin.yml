@@ -6,19 +6,15 @@ authors: [ Daniel_Garcia, Kenley_Ruiz ]
 description: Store, get, share player xp
 website: https://github.com/Dg0222/XPShare_Minecraft_Plugin
 commands:
-    XPStore:
+    storexp:
       description: Stores current player Xp
       usage: /<command> [integer]
-      aliases: StoreXp
-      XPGet:
-        description: Get player Xp that was stored
-        usage: /<command> [integer]
-        aliases: GetXp
-        XPStored:
-          description: Shows player Xp that is currently stored
-          usage: /<command> [integer]
-          aliases: StoredXp
-          XPShare:
-            description: Share Xp with another player
-            usage: /<command> [player] [integer]
-            aliases: ShareXp
+    getxp:
+      description: Get player Xp that was stored
+      usage: /<command> [integer]
+    storedxp:
+      description: Shows player Xp that is currently stored
+      usage: /<command>
+    sharexp:
+      description: Share Xp with another player
+      usage: /<command> [player] [integer]

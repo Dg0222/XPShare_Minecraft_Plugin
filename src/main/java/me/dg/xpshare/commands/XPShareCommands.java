@@ -1,5 +1,6 @@
 package me.dg.xpshare.commands;
 
+import me.dg.xpshare.XPShare;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
@@ -9,7 +10,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.bukkit.plugin.Plugin;
 
 public class XPShareCommands implements CommandExecutor {
 
@@ -25,13 +25,13 @@ public class XPShareCommands implements CommandExecutor {
 
             Player player = (Player) sender;
             PersistentDataContainer data = player.getPersistentDataContainer();
-            NamespacedKey nameSpacedKey = new NamespacedKey((Plugin) this, "storedXp");
-            int storedXp = data.get(nameSpacedKey, PersistentDataType.INTEGER) == null ? 0 : data.get(nameSpacedKey, PersistentDataType.INTEGER);
+            NamespacedKey nameSpacedKey = new NamespacedKey(XPShare.getPlugin(), "storedXp");
+            int storedXp = data.get(nameSpacedKey, PersistentDataType.INTEGER);
             int currentXp = player.getTotalExperience();
 
 
             // command to store player's xp /XPStore
-            if (command.getName().equalsIgnoreCase("XPStore")) {
+            if (command.getName().equalsIgnoreCase("storexp")) {
 
                 try {
                     int inputtedXpValue = Integer.parseInt(args[0]);
@@ -54,7 +54,7 @@ public class XPShareCommands implements CommandExecutor {
             }
 
             // command to share player's xp with another player /XPShare
-            if (command.getName().equalsIgnoreCase("XPShare")) {
+            if (command.getName().equalsIgnoreCase("sharexp")) {
 
                 try {
 
@@ -82,7 +82,7 @@ public class XPShareCommands implements CommandExecutor {
             }
 
             // command to get player's currently stored xp /XPGet
-            if (command.getName().equalsIgnoreCase("XPGet")) {
+            if (command.getName().equalsIgnoreCase("getxp")) {
 
                 try {
                     int inputtedXpValue = Integer.parseInt(args[0]);
@@ -110,7 +110,7 @@ public class XPShareCommands implements CommandExecutor {
             }
 
             //command to show player's currently stored xp /XPStored
-            if (command.getName().equalsIgnoreCase("XPStored")) {
+            if (command.getName().equalsIgnoreCase("storedxp")) {
                 player.sendMessage(ChatColor.RED + "This is your current amount of XP stored!" + storedXp);
             }
         }
