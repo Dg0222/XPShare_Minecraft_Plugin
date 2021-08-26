@@ -11,7 +11,7 @@
 ------------------------------COMMAND LIST------------------------------
 
 
----> /getxp ---> Gets amount of xp that is inputted from players current stored xp ---> Input must follow ---> /getxp (amount)
+--> /getxp --> Gets amount of xp that is inputted from players current stored xp --> Input must follow --> /getxp (amount)
 
 
 ---> /sharexp ---> Share xp with another player ---> Input must follow ---> /sharexp (target player) (amount)
